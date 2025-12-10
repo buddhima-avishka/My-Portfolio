@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+/* Neo-brutalism styles */
+.neo-brutalism-blue {
+  background: #2b77e7;
+  position: relative;
+  border-radius: 10px;
+  border: 3px solid #2b77e7;
+  box-shadow: 0.6rem 0.6rem #1e56a0, 0.6rem 0.6rem 0 3px #000;
+}
+
+.neo-brutalism-white {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 3px solid #000000;
+  box-shadow: 0.5rem 0.5rem #000;
+}
+
+.neo-brutalism-white:hover {
+  box-shadow: 0.3rem 0.3rem #000;
+  transform: translate(0.2rem, 0.2rem);
+  transition: all 0.2s ease-in-out;
+}
+
+.info-box {
+  @apply mx-5 relative flex flex-col gap-3 max-w-2xl pt-4 pb-12 px-8 text-white;
+  background: #2b77e7;
+  border-radius: 10px;
+  border: 3px solid #2b77e7;
+  box-shadow: 0.6rem 0.6rem #1e56a0, 0.6rem 0.6rem 0 3px #000;
+}
+
+.neo-btn {
+  @apply py-3 px-6 rounded-lg text-blue-500 text-center font-semibold sm:w-1/2 w-[90%] -bottom-5 absolute mx-auto right-0 left-0 flex justify-center items-center gap-3;
+}

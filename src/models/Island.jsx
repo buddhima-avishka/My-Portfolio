@@ -89,7 +89,10 @@ const Island = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
 
       if(Math.abs(rotationSpeed.current) < 0.001) {
         rotationSpeed.current = 0;
-      } else {
+      } 
+
+      islandRef.current.rotation.y += rotationSpeed.current;
+    } else {
         const rotation = islandRef.current.rotation.y;
 
         islandRef.current.rotation.y += rotationSpeed.current;
@@ -113,7 +116,6 @@ const Island = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
             setCurrentStage(null);
         }
       }
-    }
   })
 
   useEffect(() => {
@@ -136,7 +138,7 @@ const Island = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
 
   return (
     <a.group ref={islandRef} {...props}>
-      <group position={[-1.342, 0, 0.216]} rotation={[-Math.PI / 2, 0, 0]}>
+      {/* <group position={[-1.342, 0, 0.216]} rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group
             position={[-3.97, 1.249, -18.815]}
@@ -3521,7 +3523,148 @@ const Island = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
             scale={[0.291, 0.577, 0.291]}
           />
         </group>
+      </group> */}
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="Root">
+            <group
+              name="WindowsGame"
+              position={[-0.889, 0.34, 3.44]}
+              rotation={[0, 0, 0.836]}
+              scale={0.816}>
+              <mesh
+                name="WindowsGame_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.WindowsGame_0.geometry}
+                material={materials.Windows_Game}
+              />
+            </group>
+            <group name="RingRacAR003" position={[0.47, 1.061, 4.349]} rotation={[0, 0, -1.402]}>
+              <mesh
+                name="RingRacAR003_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.RingRacAR003_0.geometry}
+                material={materials.Ship_Game}
+              />
+            </group>
+            <group name="RingRacAR002" position={[0.86, -0.14, 4.349]} rotation={[0, 0, 2.632]}>
+              <mesh
+                name="RingRacAR002_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.RingRacAR002_0.geometry}
+                material={materials.Ship_Game}
+              />
+            </group>
+            <group name="RingRacAR001" position={[-1.282, -0.611, 4.349]} rotation={[0, 0, 1.053]}>
+              <mesh
+                name="RingRacAR001_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.RingRacAR001_0.geometry}
+                material={materials.Ship_Game}
+              />
+            </group>
+            <group name="PinkGlow">
+              <mesh
+                name="PinkGlow_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.PinkGlow_0.geometry}
+                material={materials['BG.001']}
+              />
+            </group>
+            <group
+              name="monorailcar"
+              position={[1.19, -1.276, 3.557]}
+              rotation={[-0.189, 0.185, -2.25]}>
+              <mesh
+                name="monorailcar_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.monorailcar_0.geometry}
+                material={materials.Floating_City}
+              />
+            </group>
+            <group
+              name="monorailcar002"
+              position={[1.226, -1.243, 3.545]}
+              rotation={[-0.007, -0.006, -2.443]}>
+              <mesh
+                name="monorailcar002_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.monorailcar002_0.geometry}
+                material={materials.Floating_City}
+              />
+            </group>
+            <group
+              name="monorailcar001"
+              position={[1.226, -1.243, 3.545]}
+              rotation={[-0.007, -0.006, -2.443]}>
+              <mesh
+                name="monorailcar001_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.monorailcar001_0.geometry}
+                material={materials.Floating_City}
+              />
+            </group>
+            <group name="MiscBuildings" position={[-0.712, 1.166, 3.44]} rotation={[0, 0, 0.246]}>
+              <mesh
+                name="MiscBuildings_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.MiscBuildings_0.geometry}
+                material={materials.Misc_Buildings}
+              />
+            </group>
+            <group name="Leaderboard" position={[-0.244, 1.355, 5.189]} rotation={[0, 0, 0.025]}>
+              <mesh
+                name="Leaderboard_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.Leaderboard_0.geometry}
+                material={materials.Leaderboard}
+              />
+            </group>
+            <group name="DeviceLLab" position={[-0.384, 0.112, 4.179]} scale={1.288}>
+              <mesh
+                name="DeviceLLab_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.DeviceLLab_0.geometry}
+                material={materials.Device_Experience}
+              />
+            </group>
+            <group name="FloatingCity" position={[0.014, 0.116, 0.504]}>
+              <mesh
+                name="FloatingCity_0"
+                castShadow
+                receiveShadow
+                geometry={nodes.FloatingCity_0.geometry}
+                material={materials.Floating_City}
+              />
+            </group>
+            <group name="Armature" position={[0.522, 0.695, 4.71]}>
+              <primitive object={nodes.Armature_rootJoint} />
+              <skinnedMesh
+                name="RingRacAR_0"
+                geometry={nodes.RingRacAR_0.geometry}
+                material={materials.Ship_Game}
+                skeleton={nodes.RingRacAR_0.skeleton}
+              />
+              <group name="RingRacAR" position={[0.002, -0.002, 0.637]} rotation={[0, 0, -1.039]} />
+            </group>
+            <group name="Sun">
+              <group name="Sun_1" />
+            </group>
+          </group>
+        </group>
       </group>
+      
     </a.group>
   );
 };

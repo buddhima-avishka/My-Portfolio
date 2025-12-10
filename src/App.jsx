@@ -11,7 +11,7 @@ const App = () => {
     <main className='bg-slate-300/20 min-h-screen'>
       <Router>
         <Navbar/>
-        <div className='pt-20'>
+        <div>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />

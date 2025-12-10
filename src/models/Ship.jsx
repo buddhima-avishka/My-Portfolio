@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import shipScene from "../assets/3d/ship.glb"
-import { useGLTF } from '@react-three/drei'
+import { useAnimations, useGLTF } from '@react-three/drei'
 
 const Ship = ({ isRotating, ...props}) => {
 
-  const { scene, animations} = useGLTF(shipScene)
+  const ref = useRef();
+
+  const { scene, animations} = useGLTF(shipScene);
+  const { actions } = useAnimations(animations,ref);
+
+  useEffect(() => {
+    if(isRotating) {
+      actions['Take 001'].play();
+    } else {
+      actions['Take 001'].stop();
+    }
+  }, [actions, isRotating])
 
   return (
-    <mesh {...props} scale={[0.003, 0.003, 0.003]}>
+    <mesh {...props} ref={ref} scale={[0.003, 0.003, 0.003]}>
       <primitive object={scene}/>
     </mesh>
   )

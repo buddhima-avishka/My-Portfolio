@@ -6,10 +6,10 @@ import Island from '../models/Island'
 import Sky from '../models/Sky'
 import Bird from '../models/Bird'
 import Ship from '../models/Ship'
+import Drone from '../models/Drone'
+import Plane from '../models/Plane'
+import HomeInfo from '../components/HomeInfo'
 
-{/* <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
-  POPUP
-</div> */}
 
 const Home = () => {
 
@@ -19,13 +19,13 @@ const Home = () => {
   // Island
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
-    let screenPosition = [0, -6.5, -43];
+    let screenPosition = [0, -33, -43];
     let rotation = [0.1, 4.7, 0];
 
     if (window.innerWidth < 768) {
-      screenScale = [0.9, 0.9, 0.9];
+      screenScale = [8, 8, 8];
     } else {
-      screenScale = [1, 1, 1];
+      screenScale = [9, 9, 9];
     }
 
     return [screenScale, screenPosition, rotation]
@@ -46,12 +46,49 @@ const Home = () => {
     return [screenScale, screenPosition]
   }
 
+  // Drone
+  const adjustDroneForScreenSize = () => {
+    let screenScale, screenPosition;
+
+    if (window.innerWidth < 768) {
+      screenScale = [0.5, 0.5, 0.5];
+      screenPosition = [0, -1.5, 1];
+    } else {
+      screenScale = [1, 1, 1];
+      screenPosition = [0, -0.8, -3];
+    }
+
+    return [screenScale, screenPosition]
+  }
+
+  // Plane
+  const adjustPlaneForScreenSize = () => {
+    let screenScale, screenPosition;
+
+    if (window.innerWidth < 768) {
+      screenScale = [1, 1, 1];
+      screenPosition = [0, -1, 1];
+    } else {
+      screenScale = [2, 2, 2];
+      screenPosition = [0, -1.3, -2];
+    }
+
+    return [screenScale, screenPosition]
+  }
+
   const [islandScale, islandPosition, islandRotation] = adjustIslandForScreenSize();
 
   const [shipScale, shipPosition] = adjustShipForScreenSize();
 
+  const [droneScale, dronePosition] = adjustDroneForScreenSize();
+
+  const [planeScale, planePosition] = adjustPlaneForScreenSize();
+
   return (
     <section className='w-full h-screen relative'>
+      <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
+        {currentStage && <HomeInfo currentStage={currentStage}/>}
+      </div> 
       <Canvas 
         className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{ near:0.1, far:1000 }}
@@ -63,7 +100,9 @@ const Home = () => {
           <hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1}/>
 
           <Bird/>
-          <Sky/>
+          <Sky
+            isRotating={isRotating}
+          />
 
           <Island
             scale={islandScale}
@@ -73,11 +112,25 @@ const Home = () => {
             setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
           />
-          <Ship
+          {/* <Ship
             isRotating={isRotating}
             shipScale={shipScale}
             shipPosition={shipPosition}
             rotation={[0, 20, 0]}
+          /> */}
+
+          {/* <Drone
+            isRotating={isRotating}
+            droneScale={droneScale}
+            dronePosition={dronePosition}
+            rotation={[0, 9.5, 0]}
+          /> */}
+
+          <Plane
+            isRotating={isRotating}
+            planeScale={planeScale}
+            planePosition={planePosition}
+            rotation={[0, 1.5, 0]}
           />
 
         </Suspense>
