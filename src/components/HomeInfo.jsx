@@ -30,7 +30,7 @@ const renderContent = {
   ),
   3: (
     <InfoBox
-      text="Worked with MERN, Laravel and Flutter"
+      text="Passionate software engineer creating impactful digital experiences."
       link="/about"
       btnText="Explore More"
     />

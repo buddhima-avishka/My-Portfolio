@@ -22,7 +22,7 @@ const Navbar = () => {
             alt="Flexy UI Logo"
             width={44}
             height={44}
-            className="rounded-full border-r-2 border-transparent transition-all duration-300 hover:border-[#187DF4] active:scale-95"
+            className="rounded-full border-r-2 border-transparent transition-all duration-300 hover:border-green-500 active:scale-95"
           />
         </Link>
 
@@ -39,7 +39,7 @@ const Navbar = () => {
             to={link}
             key={title}
             onClick={() => setShowNav(false)}
-            className="rounded-full border-b-2 border-transparent px-4 py-1 text-lg [letter-spacing:1px] transition-colors duration-300 hover:border-[#187DF4]"
+            className="rounded-full border-b-2 border-transparent px-4 py-1 text-lg [letter-spacing:1px] transition-colors duration-300 hover:border-green-500"
           >
             {title}
           </Link>
