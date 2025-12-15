@@ -1,34 +1,62 @@
+// Import images
+import StayziaImg from './images/Stayzia.png';
+import CompassoraImg from './images/Compassora.png';
+import GeekZoneImg from './images/GeekZone.png';
+import BMHImg from './images/BMH.png';
+import PortfolioImg from './images/Portfolio.png';
+import UFMSImg from './images/UFMS.png';
+import SLMSImg from './images/SLMS.png';
+
 export const projectsData = [
     {
       title: "Stayzia",
       description: "A MERN-powered platform connecting travelers to their ideal stays seamlessly.",
       link: "https://github.com/buddhima-avishka/Stazia.git",
+      image: StayziaImg,
+      technologies: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"]
     },
     {
       title: "Compassora (Ongoing)",
       description: "Seamlessly connecting travelers to immersive experiences with MERN and Three.js.",
-      link: "https://github.com/buddhima-avishka/Compassora.git"
+      link: "https://github.com/buddhima-avishka/Compassora.git",
+      image: CompassoraImg,
+      technologies: ["React", "Three.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"]
     },
     {
       title: "University Farm Management System",
       description: "Streamlining farm operations and resource management for Sabaragamuwa University of Sri Lanka",
-      link: "https://github.com/buddhima-avishka/farm-management-system-susl.git"
+      link: "https://github.com/buddhima-avishka/farm-management-system-susl.git",
+      image: UFMSImg,
+      technologies: ["Laravel", "PHP", "MySQL", "Bootstrap"]
     },
     {
       title: "Bring Me Home WebApp",
       description: "A MERN web app connecting travelers to deliver parcels efficiently and affordably.",
-      link: "https://github.com/NethmiPramoddya/Bring-Me-Home-web-app-Capstone-Group21.git"
+      link: "https://github.com/NethmiPramoddya/Bring-Me-Home-web-app-Capstone-Group21.git",
+      image: BMHImg,
+      technologies: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"]
     },
     {
       title: "School Leave Management System (Ongoing)",
       description: "A cross-platform app digitizing and streamlining school leave management.",
-      link: "https://github.com/sajithcode/School-Leave-management-System"
+      link: "https://github.com/sajithcode/School-Leave-management-System",
+      image: SLMSImg,
+      technologies: ["Flutter", "Firebase", "Dart"]
     },
     {
       title: "GeekZone-V1.0",
       description: "A modern frontend platform promoting GeekZone V1.0 with seamless user experience.",
-      link: "https://github.com/buddhima-avishka/GeekZone-V1.0.git"
-    }
+      link: "https://github.com/buddhima-avishka/GeekZone-V1.0.git",
+      image: GeekZoneImg,
+      technologies: ["React", "CSS", "JavaScript", "Tailwind"]
+    },
+    {
+      title: "Portfolio",
+      description: "Immersive 3D portfolio showcasing creativity, code, and interactive experiences.",
+      link: "https://github.com/buddhima-avishka/My-Portfolio.git",
+      image: PortfolioImg,
+      technologies: ["React", "Three.js", "Node.js", "Tailwind CSS"]
+    },
   ];
 
 export const techStack = {
@@ -106,10 +134,6 @@ export const techStack = {
     },
   ],
   "Database Management": [
-    // {
-    //   name: "SQL Server",
-    //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
-    // },
     {
       name: "MySQL",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",

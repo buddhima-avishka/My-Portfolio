@@ -4,27 +4,44 @@ import { arrow } from '../assets/icons'
 
 const InfoBox = ({ text, link, btnText}) => (
   <div className='info-box'>
-    <p className='font-medium sm:text-xl text-center'>{text}</p>
-    <Link to={link} className='neo-brutalism-white neo-btn'>
+    <p className='font-medium sm:text-xl text-center' style={{ fontFamily: 'SpButchLiteLight, sans-serif' }}>{text}</p>
+    <Link to={link} className='neo-brutalism-white neo-btn' style={{ fontFamily: 'SpButchLiteLight, sans-serif' }}>
       {btnText}
-      <img src={arrow} className='w-4 h-4 object-contain' />
+      <img src={arrow} className='w-4 h-4 object-contain animate-slide-left-right' />
+    </Link>
+  </div>
+)
+
+const InfoBox1 = ({ text, link, btnText}) => (
+  <div className='info-box'>
+    <p className='font-medium sm:text-xl text-center' style={{ fontFamily: 'SpButchLiteLight, sans-serif' }}>{text}</p>
+    <Link to={link} className='neo-brutalism-white neo-btn flex items-center gap-3' style={{ fontFamily: 'SpButchLiteLight, sans-serif' }}>
+      {btnText}
+      <div className="w-10 h-6 border-2 border-gray-600 rounded-full flex justify-center items-center pl-2 animate-slide-left-right">
+        <div className="w-2 h-1 bg-orange-400 rounded-full"></div>
+      </div>
     </Link>
   </div>
 )
 
 const renderContent = {
   1: (
-    <h1 className='sm:text-xl sm-leading-snug text-center py-4 px-8 bg-blue-500 text-white mx-5'>
-      Hi, I am <span className='font-semibold'>Buddhima Avishka</span>
-      <br />
-      A Full-stack Software Engineer from <br /> Sri Lanka
-    </h1>
+    <InfoBox1
+      text={
+        <>
+          Hi, I am Buddhima Avishka
+          <br />
+          A Full-stack Software Engineer from Sri Lanka
+        </>
+      }
+      btnText="Scroll Right"
+    />
   ),
   2: (
     <InfoBox
       text="Delivered high-quality applications with clean code and solid architecture. Interested to explore?"
       link="/projects"
-      btnText="Discover my creations"
+      btnText="Explore My Work"
     />
     
   ),

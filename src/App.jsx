@@ -6,9 +6,12 @@ import About from './pages/About'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 
+import CustomCursor from "./components/CustomCursor";
+
 const App = () => {
   return (
     <main className='bg-slate-300/20 min-h-screen'>
+      <CustomCursor />
       <Router>
         <Navbar/>
         <div>

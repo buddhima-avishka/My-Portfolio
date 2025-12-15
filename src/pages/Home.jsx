@@ -1,20 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Loader from '../components/Loader'
 import Island from '../models/Island'
 import Sky from '../models/Sky'
 import Bird from '../models/Bird'
-import Ship from '../models/Ship'
 import Drone from '../models/Drone'
 import Plane from '../models/Plane'
 import HomeInfo from '../components/HomeInfo'
+import sound from '../assets/Aylex-Stylish.mp3'
+import soundon from '../assets/icons/soundon.png'
+import soundoff from '../assets/icons/soundoff.png'
 
 
 const Home = () => {
 
-  const [isRotating, setIsRotating] = useState(false)
+  const audioRef = useRef(new Audio(sound));
+  audioRef.current.volume = 0.4;
+  audioRef.current.loop = true;
+  const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(1)
+  const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+
+  useEffect(() => {
+    if(isPlayingMusic) {
+      audioRef.current.play();
+    }
+
+    return () => {
+      audioRef.current.pause();
+    }
+  }, [isPlayingMusic])
 
   // Island
   const adjustIslandForScreenSize = () => {
@@ -29,21 +45,6 @@ const Home = () => {
     }
 
     return [screenScale, screenPosition, rotation]
-  }
-
-  // Ship
-  const adjustShipForScreenSize = () => {
-    let screenScale, screenPosition;
-
-    if (window.innerWidth < 768) {
-      screenScale = [1.5, 1.5, 1.5];
-      screenPosition = [0, -1.5, 0];
-    } else {
-      screenScale = [3, 3, 3];
-      screenPosition = [0, -4, -4];
-    }
-
-    return [screenScale, screenPosition]
   }
 
   // Drone
@@ -78,8 +79,6 @@ const Home = () => {
 
   const [islandScale, islandPosition, islandRotation] = adjustIslandForScreenSize();
 
-  const [shipScale, shipPosition] = adjustShipForScreenSize();
-
   const [droneScale, dronePosition] = adjustDroneForScreenSize();
 
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
@@ -112,12 +111,6 @@ const Home = () => {
             setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
           />
-          {/* <Ship
-            isRotating={isRotating}
-            shipScale={shipScale}
-            shipPosition={shipPosition}
-            rotation={[0, 20, 0]}
-          /> */}
 
           {/* <Drone
             isRotating={isRotating}
@@ -130,11 +123,20 @@ const Home = () => {
             isRotating={isRotating}
             planeScale={planeScale}
             planePosition={planePosition}
-            rotation={[0, 1.5, 0]}
+            rotation={[0, 1.5, 0.2]}
           />
 
         </Suspense>
       </Canvas>
+
+      <div className='absolute bottom-2 left-2'>
+        <img
+          src={!isPlayingMusic ? soundoff : soundon} 
+          alt="sound"
+          className='w-10 h-10 cursor-pointer object-contain'
+          onClick={() => setIsPlayingMusic(!isPlayingMusic)}
+        />
+      </div>
     </section>
   )
 }
